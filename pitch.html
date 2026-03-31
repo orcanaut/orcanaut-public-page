@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>orcan. — Pitch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            surface: '#F7F5F0',
+            dark: '#0D0F12',
+            accent: '#E86C26',
+            ink: '#1A1A1A',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::selection { background: #E86C26; color: #fff; }
+    body {
+      background-color: #F7F5F0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-surface/95 border-b border-ink/5 z-50">
+    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="index.html" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">orcan.</a>
+      <a href="index.html" class="text-sm text-ink/50 hover:text-ink transition-colors">Back to home</a>
+    </div>
+  </nav>
+
+  <!-- Title slide -->
+  <section class="pt-28 pb-16 sm:pt-36 sm:pb-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm font-medium text-accent uppercase tracking-wider mb-4">Investor Pitch</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-ink">
+        AI Agents That Run<br>
+        <span class="text-accent">Your Processes</span>
+      </h1>
+      <p class="mt-6 text-lg text-ink/50">Connect your tools. Describe the process. Agents handle the rest.</p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">The Problem</p>
+        </div>
+        <div class="space-y-4">
+          <p class="text-lg text-ink/80 leading-relaxed">Every company runs on dozens of tools &mdash; Jira, Slack, CRM, databases, email, cloud services. Business processes span across all of them.</p>
+          <p class="text-lg text-ink/80 leading-relaxed">Automating these cross-tool processes requires either <strong>expensive custom integrations</strong> or <strong>rigid workflow builders</strong> that break when anything changes.</p>
+          <p class="text-lg text-ink/60">Teams spend weeks wiring tools together instead of doing actual work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">The Solution</p>
+        </div>
+        <div class="space-y-4">
+          <p class="text-2xl font-display font-bold text-ink leading-snug">Orcan is an AI agent platform that automates business processes across your tools.</p>
+          <p class="text-lg text-ink/70 leading-relaxed">Connect your tools via MCP (Model Context Protocol). Describe the process. Orcan's agents figure out the steps, call the right tools in the right order, handle edge cases, and deliver results.</p>
+          <div class="bg-white rounded-xl p-6 border border-ink/5 mt-6">
+            <p class="text-sm text-ink/50 mb-3">Unlike traditional automation (Zapier, n8n) which follows fixed rules:</p>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10132;</span>
+                <p class="text-ink/80">Orcan agents <strong>reason</strong> about what to do next</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10132;</span>
+                <p class="text-ink/80">They <strong>adapt</strong> when things change and handle edge cases</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent mt-0.5">&#10132;</span>
+                <p class="text-ink/80">They have <strong>memory</strong> &mdash; every run teaches them something new</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">How It Works</p>
+        </div>
+        <div>
+          <div class="space-y-6">
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">01</span>
+              <div>
+                <p class="font-display font-bold text-ink">Connect your tools</p>
+                <p class="text-sm text-ink/55 mt-1">Plug in MCP servers for Jira, Slack, databases, APIs, or any service</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">02</span>
+              <div>
+                <p class="font-display font-bold text-ink">Define an agent</p>
+                <p class="text-sm text-ink/55 mt-1">Describe its role, which tools it can use, and what processes it handles</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">03</span>
+              <div>
+                <p class="font-display font-bold text-ink">Give it a task</p>
+                <p class="text-sm text-ink/55 mt-1">"Process all new invoices" or "Onboard this new customer"</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">04</span>
+              <div>
+                <p class="font-display font-bold text-ink">Agent executes the process</p>
+                <p class="text-sm text-ink/55 mt-1">Calls the right tools, in the right order, handles the full workflow</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-ink/5 mt-8">
+            <p class="text-xs text-ink/40 uppercase tracking-wider mb-3">Example</p>
+            <p class="text-ink/70"><strong class="text-ink">"Close out sprint 42"</strong> &rarr; Agent reads Jira tickets, moves unfinished items to backlog, generates sprint report, creates next sprint, posts summary to Slack.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">Why Now</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></div>
+            <p class="text-lg text-ink/80"><strong>MCP is becoming the standard</strong> for connecting AI to tools &mdash; one protocol, any tool</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></div>
+            <p class="text-lg text-ink/80">LLMs can now <strong>reliably plan multi-step processes</strong> and use tools</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></div>
+            <p class="text-lg text-ink/80">Companies are ready to move from <strong>"AI chatbots" to "AI that does work"</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market + Business Model -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent mb-6">Market</p>
+          <div class="space-y-4">
+            <p class="text-3xl font-display font-bold text-ink">$15B+</p>
+            <p class="text-sm text-ink/55">Intelligent process automation market by 2028</p>
+            <p class="text-sm text-ink/55 mt-4">Every company with 10+ SaaS tools is a potential customer. Land with dev/ops teams (API-first), expand to business teams (templates + UI).</p>
+          </div>
+        </div>
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent mb-6">Business Model</p>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+              <p class="text-sm text-ink/70"><strong>Usage-based pricing</strong> &mdash; per process execution</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+              <p class="text-sm text-ink/70">Built-in usage tracking: tokens, execution time, tool calls</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
+              <p class="text-sm text-ink/70">Free tier for small teams &rarr; paid for organizations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Advantage -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">Our Moat</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-5 border border-ink/5">
+            <p class="font-display font-bold text-ink mb-2">Agents with memory</p>
+            <p class="text-sm text-ink/55 leading-relaxed">Every run stores learnings. Run 1 takes 5 steps. Run 50 takes 2. Agents compound knowledge &mdash; no workflow builder can match that.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-ink/5">
+            <p class="font-display font-bold text-ink mb-2">MCP-native</p>
+            <p class="text-sm text-ink/55 leading-relaxed">Not locked to specific integrations. Any MCP-compatible tool works instantly. One protocol, infinite tools.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-ink/5">
+            <p class="font-display font-bold text-ink mb-2">Secure execution</p>
+            <p class="text-sm text-ink/55 leading-relaxed">All tasks run in isolated sandboxes. Tool access is scoped per agent. Your data stays protected.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-ink/5">
+            <p class="font-display font-bold text-ink mb-2">Fully observable</p>
+            <p class="text-sm text-ink/55 leading-relaxed">Every step is logged and streamable in real-time. See what the agent did, which tools it called, and why.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Traction -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">Traction</p>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-ink/70">Working product: full agent loop (plan &rarr; execute &rarr; learn &rarr; repeat)</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-ink/70">MCP tool integration, vector memory, file I/O, real-time streaming, scheduled runs</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-ink/70">Early access waitlist open</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Ask -->
+  <section class="py-16 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[200px_1fr] gap-8">
+        <div>
+          <p class="font-display font-bold text-sm uppercase tracking-wider text-accent">The Ask</p>
+        </div>
+        <div>
+          <p class="text-2xl font-display font-bold text-ink mb-6">Pre-seed round</p>
+          <div class="space-y-4">
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">01</span>
+              <p class="text-ink/70">Launch public beta and onboard first 100 teams</p>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">02</span>
+              <p class="text-ink/70">Build MCP tool marketplace (pre-built connectors for popular tools)</p>
+            </div>
+            <div class="flex gap-5 items-start">
+              <span class="font-mono text-sm text-accent font-bold mt-1 shrink-0">03</span>
+              <p class="text-ink/70">Add web UI so non-developers can create and manage agents</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="py-20 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+        AI agents that run your processes<br>
+        <span class="text-accent">across all your tools.</span>
+      </p>
+      <div class="mt-8">
+        <a href="index.html#waitlist" class="inline-block px-6 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-md transition-colors text-sm">Get Early Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-ink/5">
+    <div class="max-w-4xl mx-auto px-6 flex items-center justify-between">
+      <div class="text-sm text-ink/40">&copy; 2026 Orcan</div>
+      <a href="index.html" class="text-sm text-accent hover:text-accent/80 transition-colors">orcan.dev</a>
+    </div>
+  </footer>
+
+</body>
+</html>
