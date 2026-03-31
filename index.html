@@ -3,95 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orcan — AI Agents That Do the Work For You</title>
-  <meta name="description" content="Orcan runs your tasks end-to-end. Agents think, write Python, execute in sandboxes, and learn from results.">
+  <title>orcan. — AI agents that do the work for you</title>
+  <meta name="description" content="Describe what you need, attach your files, and let Orcan's AI agents handle the rest — from data analysis to report generation.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
           colors: {
-            primary: { 50: '#EEF2FF', 100: '#E0E7FF', 200: '#C7D2FE', 300: '#A5B4FC', 400: '#818CF8', 500: '#6366F1', 600: '#4F46E5', 700: '#4338CA', 800: '#3730A3', 900: '#312E81' },
+            surface: '#F7F5F0',
+            dark: '#0D0F12',
+            accent: '#E86C26',
+            ink: '#1A1A1A',
           }
         }
       }
     }
   </script>
   <style>
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    .float-animation { animation: float 3s ease-in-out infinite; }
-    .float-delay-1 { animation-delay: 0.5s; }
-    .float-delay-2 { animation-delay: 1s; }
+    ::selection { background: #E86C26; color: #fff; }
+    body {
+      background-color: #F7F5F0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    }
   </style>
 </head>
-<body class="font-sans text-gray-900 bg-white antialiased">
+<body class="font-sans text-ink antialiased">
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold text-primary-600 tracking-tight">orcan</a>
+  <nav class="fixed top-0 w-full bg-surface/95 border-b border-ink/5 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="#" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">orcan.</a>
       <div class="flex items-center gap-6">
-        <a href="#features" class="text-sm text-gray-600 hover:text-gray-900 hidden sm:block">Features</a>
-        <a href="#how-it-works" class="text-sm text-gray-600 hover:text-gray-900 hidden sm:block">How It Works</a>
-        <a href="#waitlist" class="text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-lg transition-colors">Get Early Access</a>
+        <a href="#features" class="text-sm text-ink/50 hover:text-ink transition-colors hidden sm:block">Features</a>
+        <a href="#how" class="text-sm text-ink/50 hover:text-ink transition-colors hidden sm:block">How it works</a>
+        <a href="#hero-form" class="text-sm font-medium text-white bg-accent hover:bg-accent/90 px-4 py-2 rounded-md transition-colors">Early Access</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary-50/50 to-white"></div>
-    <div class="relative max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 text-sm font-medium px-3 py-1 rounded-full mb-6">
-          <span class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
-          Now accepting early access signups
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-          AI Agents That Do<br>
-          <span class="text-primary-600">the Work For You</span>
-        </h1>
-        <p class="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-          Describe what you need, attach your files, and let Orcan's agents handle the rest &mdash; from data analysis to report generation.
-        </p>
-        <form id="hero-form" class="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleSubmit(event, this)">
-          <input type="email" required placeholder="you@company.com" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm">
-          <button type="submit" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors text-sm whitespace-nowrap">
-            Get Early Access
-          </button>
-        </form>
-        <p class="mt-4 text-sm text-gray-500">Be the first to know when we launch. No spam, ever.</p>
-      </div>
+  <section class="pt-28 pb-16 sm:pt-36 sm:pb-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <!-- Left: copy -->
+        <div>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-ink">
+            AI Agents That Do<br>
+            <span class="text-accent">the Work For You</span>
+          </h1>
+          <p class="mt-6 text-lg text-ink/60 leading-relaxed max-w-md">
+            Describe what you need, attach your files, and let Orcan's agents handle the rest &mdash; from data analysis to report generation.
+          </p>
 
-      <!-- Agent Flow Diagram -->
-      <div class="mt-16 flex justify-center">
-        <div class="flex items-center gap-3 sm:gap-5">
-          <div class="float-animation bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-3 sm:px-6 sm:py-4 text-center">
-            <div class="text-2xl mb-1">🧠</div>
-            <div class="text-xs sm:text-sm font-semibold text-gray-700">Think</div>
-            <div class="text-xs text-gray-400">Planner</div>
+          <!-- Pipeline -->
+          <div class="mt-8 flex flex-nowrap items-center gap-1.5">
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">understand</span>
+            <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">analyze</span>
+            <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">create</span>
+            <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">refine</span>
+            <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20 shrink-0">deliver</span>
           </div>
-          <svg class="w-6 h-6 text-primary-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          <div class="float-animation float-delay-1 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-3 sm:px-6 sm:py-4 text-center">
-            <div class="text-2xl mb-1">⚡</div>
-            <div class="text-xs sm:text-sm font-semibold text-gray-700">Execute</div>
-            <div class="text-xs text-gray-400">Sandbox</div>
+
+        </div>
+
+        <!-- Right: product mockup -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-2xl shadow-ink/10 border border-ink/5">
+          <div class="px-4 py-2.5 border-b border-ink/5 flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-accent"></div>
+            <span class="text-xs text-ink/40 font-medium">orcan agent</span>
           </div>
-          <svg class="w-6 h-6 text-primary-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          <div class="float-animation float-delay-2 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-3 sm:px-6 sm:py-4 text-center">
-            <div class="text-2xl mb-1">🔍</div>
-            <div class="text-xs sm:text-sm font-semibold text-gray-700">Learn</div>
-            <div class="text-xs text-gray-400">Reasoner</div>
-          </div>
-          <svg class="w-6 h-6 text-primary-300 shrink-0 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          <div class="hidden sm:block float-animation bg-primary-50 rounded-xl shadow-lg border border-primary-100 px-6 py-4 text-center">
-            <div class="text-2xl mb-1">🔄</div>
-            <div class="text-xs sm:text-sm font-semibold text-primary-700">Repeat</div>
-            <div class="text-xs text-primary-400">Until done</div>
+          <div class="p-5 space-y-4">
+            <!-- User message -->
+            <div class="flex justify-end">
+              <div class="bg-ink/5 rounded-xl rounded-tr-sm px-4 py-2.5 max-w-[85%]">
+                <p class="text-sm text-ink/80">Analyze last quarter's sales and create a trend report</p>
+              </div>
+            </div>
+            <!-- Agent thinking -->
+            <div class="flex justify-start">
+              <div class="space-y-3 max-w-[85%]">
+                <div class="text-xs text-ink/35 flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Reading sales_q4.csv &mdash; 2,847 rows
+                </div>
+                <div class="text-xs text-ink/35 flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Running trend analysis
+                </div>
+                <div class="text-xs text-ink/35 flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Generating charts
+                </div>
+              </div>
+            </div>
+            <!-- Agent result -->
+            <div class="flex justify-start">
+              <div class="bg-accent/5 border border-accent/10 rounded-xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                <p class="text-sm text-ink/70 mb-3">Done! Here are your results:</p>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-xs">
+                    <svg class="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    <span class="text-ink/60">trend_chart.png</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs">
+                    <svg class="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    <span class="text-ink/60">quarterly_report.pdf</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -99,117 +131,96 @@
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Everything agents need to get work done</h2>
-        <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">From secure code execution to persistent memory, Orcan provides the full runtime for autonomous agents.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Feature 1 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+  <section id="features" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-12">Why teams choose Orcan</h2>
+      <div class="grid sm:grid-cols-2 gap-x-16 gap-y-10">
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
+            <h3 class="font-display font-bold text-lg">Safe &amp; secure</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Your data stays protected. Every task runs in an isolated environment &mdash; nothing leaks, nothing persists.</p>
           </div>
-          <h3 class="font-semibold text-lg mb-2">Sandboxed Execution</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Agents execute tasks in isolated sandboxes. Safe, reproducible, zero setup required.</p>
         </div>
-        <!-- Feature 2 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
+            <h3 class="font-display font-bold text-lg">Gets smarter over time</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Agents learn from every task. The more you use Orcan, the better it understands your needs.</p>
           </div>
-          <h3 class="font-semibold text-lg mb-2">Memory & Learning</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Vector memory lets agents learn across runs. Each execution makes them smarter for the next task.</p>
         </div>
-        <!-- Feature 3 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
+            <h3 class="font-display font-bold text-lg">Works with your files</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Upload spreadsheets, PDFs, or images. Get back charts, reports, and insights &mdash; ready to share.</p>
           </div>
-          <h3 class="font-semibold text-lg mb-2">File Upload & Download</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Upload files for analysis, agents create charts, CSVs, and share results via secure URLs.</p>
         </div>
-        <!-- Feature 4 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
+            <h3 class="font-display font-bold text-lg">Plugs into your workflow</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Connect via API, Zapier, or use the dashboard directly. Fits where your team already works.</p>
           </div>
-          <h3 class="font-semibold text-lg mb-2">API-First</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">REST API with SSE streaming. Fire-and-forget or watch results arrive in real-time.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- How It Works -->
-  <section id="how-it-works" class="py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Three steps to autonomous work</h2>
-        <p class="mt-4 text-lg text-gray-600">Define, send, and let your agent handle the rest.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-14 h-14 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-5">1</div>
-          <h3 class="font-semibold text-lg mb-2">Define Your Agent</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Set a system prompt, choose a model, and enable tools like code execution or file upload.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-14 h-14 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-5">2</div>
-          <h3 class="font-semibold text-lg mb-2">Send a Task</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">POST a task via the REST API. Attach files if needed. Get a run ID back instantly.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-14 h-14 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold mx-auto mb-5">3</div>
-          <h3 class="font-semibold text-lg mb-2">Agent Delivers Results</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The agent thinks, writes code, executes, learns, and loops until the task is complete.</p>
-        </div>
-      </div>
-
-      <!-- Code Example -->
-      <div class="mt-14 max-w-2xl mx-auto">
-        <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-xl">
-          <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-700/50">
-            <div class="w-3 h-3 rounded-full bg-red-400"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-            <div class="w-3 h-3 rounded-full bg-green-400"></div>
-            <span class="ml-2 text-xs text-gray-400">terminal</span>
+  <section id="how" class="py-20 border-t border-ink/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-12">Simple as 1-2-3</h2>
+      <div class="space-y-8 max-w-2xl">
+        <div class="flex gap-6 items-start">
+          <span class="font-mono text-sm text-accent font-bold mt-0.5 shrink-0">01</span>
+          <div>
+            <h3 class="font-display font-bold">Describe your task</h3>
+            <p class="text-sm text-ink/55 mt-1">Tell the agent what you need in plain language. No technical setup required.</p>
           </div>
-          <pre class="p-5 text-sm leading-relaxed overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">$</span> curl -X POST https://api.orcan.dev/agents \
-  -H <span class="text-yellow-300">"Content-Type: application/json"</span> \
-  -d <span class="text-yellow-300">'{
-    "task": "Analyze sales.csv and create a trend chart",
-    "agent": "data-analyst",
-    "files": [{"name": "sales.csv", "content": "...base64..."}]
-  }'</span>
-
-<span class="text-gray-500"># Response:</span>
-{ <span class="text-blue-300">"id"</span>: <span class="text-yellow-300">"a1b2c3"</span>, <span class="text-blue-300">"status"</span>: <span class="text-yellow-300">"pending"</span> }</code></pre>
+        </div>
+        <div class="flex gap-6 items-start">
+          <span class="font-mono text-sm text-accent font-bold mt-0.5 shrink-0">02</span>
+          <div>
+            <h3 class="font-display font-bold">Upload your files</h3>
+            <p class="text-sm text-ink/55 mt-1">Attach spreadsheets, documents, or data. Or skip this step &mdash; it's optional.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <span class="font-mono text-sm text-accent font-bold mt-0.5 shrink-0">03</span>
+          <div>
+            <h3 class="font-display font-bold">Get your results</h3>
+            <p class="text-sm text-ink/55 mt-1">The agent works autonomously &mdash; analyzing, creating, and refining until the job is done.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Waitlist CTA -->
-  <section id="waitlist" class="py-20 bg-primary-600">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Ready to automate with AI agents?</h2>
-      <p class="mt-4 text-lg text-primary-100 max-w-xl mx-auto">Join the early access waitlist and be the first to build with Orcan.</p>
-      <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleSubmit(event, this)">
-        <input type="email" required placeholder="you@company.com" class="flex-1 px-4 py-3 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-white text-sm">
-        <button type="submit" class="px-6 py-3 bg-white text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors text-sm whitespace-nowrap">
-          Get Early Access
-        </button>
-      </form>
-      <p class="mt-4 text-sm text-primary-200">No credit card required. We'll notify you when it's your turn.</p>
+  <!-- Waitlist -->
+  <section id="waitlist" class="py-20 border-t border-ink/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-lg">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Ready to let agents do the work?</h2>
+        <p class="mt-3 text-ink/55">Join the waitlist. We'll let you know when it's your turn.</p>
+        <form id="hero-form" class="mt-8 max-w-sm" onsubmit="handleSubmit(event, this)">
+          <div class="flex gap-2">
+            <input id="email" type="email" required placeholder="you@company.com" class="flex-1 px-4 py-2.5 rounded-md border border-ink/10 bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm">
+            <button type="submit" class="px-5 py-2.5 bg-accent hover:bg-accent/90 text-white font-medium rounded-md transition-colors text-sm whitespace-nowrap">
+              Join
+            </button>
+          </div>
+          <p class="mt-2 text-xs text-ink/40">No spam, no credit card. Just early access.</p>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-10 border-t border-gray-100">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-sm text-gray-500">&copy; 2026 Orcan. All rights reserved.</div>
+  <footer class="py-10 border-t border-ink/5">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="text-sm text-ink/40">&copy; 2026 Orcan</div>
+      <a href="#hero-form" class="text-sm text-accent hover:text-accent/80 transition-colors">Join the waitlist &uarr;</a>
     </div>
   </footer>
 
@@ -218,7 +229,7 @@
       e.preventDefault();
       const email = form.querySelector('input[type="email"]').value;
       const btn = form.querySelector('button');
-      btn.textContent = 'You\'re on the list!';
+      btn.textContent = "You're in.";
       btn.disabled = true;
       btn.classList.add('opacity-75');
       form.querySelector('input').disabled = true;
