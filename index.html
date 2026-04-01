@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>orcanaut. — AI Agents That Run Your Processes</title>
-  <meta name="description" content="Connect your tools, describe the process, and let Orcanaut's AI agents handle the rest. They reason, execute, learn, and get better with every run.">
+  <title>orcanaut. — AI Agents That Do Your Processes</title>
+  <meta name="description" content="Connect your tools via MCP, describe the process, and let Orcanaut's AI agents handle the rest. Multi-step workflows, human approvals, multi-agent collaboration — agents that reason, execute, and learn.">
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Orcanaut — AI Agents That Do Your Processes">
+  <meta property="og:description" content="Connect your tools via MCP, describe the process, and let AI agents handle the rest. Multi-step workflows, human approvals, and agents that learn.">
+  <meta property="og:image" content="og-image.png">
+  <meta property="og:url" content="https://orcanaut.com">
+  <meta property="og:site_name" content="Orcanaut">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Orcanaut — AI Agents That Do Your Processes">
+  <meta name="twitter:description" content="Connect your tools via MCP. Multi-step workflows, human approvals, agents that learn.">
+  <meta name="twitter:image" content="og-image.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,10 +71,10 @@
         <div>
           <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-ink">
             AI Agents That Do<br>
-            <span class="text-accent">the Work For You</span>
+            <span class="text-accent">Your Processes</span>
           </h1>
           <p class="mt-6 text-lg text-ink/60 leading-relaxed max-w-md">
-            Connect your tools via MCP. Describe the process. Orcanaut's AI agents figure out the steps, call the right tools, and get better with every run.
+            Connect your tools via MCP. Define multi-step workflows. Orcanaut's agents reason through the steps, ask for approval when it matters, and get smarter with every run.
           </p>
 
           <!-- Pipeline -->
@@ -70,6 +84,8 @@
             <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">reason</span>
             <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">execute</span>
+            <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">approve</span>
             <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             <span class="text-[11px] font-medium uppercase px-2 py-1 rounded-full bg-ink/5 text-ink/60 border border-ink/8 shrink-0">learn</span>
             <svg class="w-3 h-3 text-ink/20 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
@@ -88,7 +104,7 @@
             <!-- User message -->
             <div class="flex justify-end">
               <div class="bg-ink/5 rounded-xl rounded-tr-sm px-4 py-2.5 max-w-[85%]">
-                <p class="text-sm text-ink/80">Close out sprint 42 and prepare the next one</p>
+                <p class="text-sm text-ink/80">Process new vendor invoices and schedule payments</p>
               </div>
             </div>
             <!-- Agent steps -->
@@ -96,30 +112,31 @@
               <div class="space-y-3 max-w-[85%]">
                 <div class="text-xs text-ink/35 flex items-center gap-2">
                   <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Reading Jira tickets for sprint 42
+                  Scanning 8 new invoices from email
                 </div>
                 <div class="text-xs text-ink/35 flex items-center gap-2">
                   <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Moving 3 unfinished items to backlog
+                  Matching invoices to purchase orders
                 </div>
                 <div class="text-xs text-ink/35 flex items-center gap-2">
                   <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Generating sprint report
+                  Flagged 2 invoices over $5k for review
+                </div>
+                <!-- Approval gate -->
+                <div class="text-xs flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  <span class="text-green-600/70">Manager approved payment batch</span>
                 </div>
                 <div class="text-xs text-ink/35 flex items-center gap-2">
                   <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Creating sprint 43 in Jira
-                </div>
-                <div class="text-xs text-ink/35 flex items-center gap-2">
-                  <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Posted summary to #engineering on Slack
+                  Payments scheduled in accounting system
                 </div>
               </div>
             </div>
             <!-- Agent result -->
             <div class="flex justify-start">
               <div class="bg-accent/5 border border-accent/10 rounded-xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                <p class="text-sm text-ink/70">Sprint 42 closed. 14 done, 3 moved to backlog. Sprint 43 created and team notified.</p>
+                <p class="text-sm text-ink/70">8 invoices processed. 6 auto-approved, 2 manager-approved. All payments scheduled.</p>
               </div>
             </div>
           </div>
@@ -143,6 +160,20 @@
         <div class="flex gap-4">
           <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
           <div>
+            <h3 class="font-display font-bold text-lg">Multi-step workflows</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Define processes as a sequence of steps. Each step runs autonomously, with built-in approval gates for actions that need a human sign-off.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
+            <h3 class="font-display font-bold text-lg">Human-in-the-loop</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Agents pause for approval when it matters &mdash; payments over a threshold, sensitive actions, edge cases. You stay in control without micromanaging.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
+          <div>
             <h3 class="font-display font-bold text-lg">Agents that learn &amp; improve</h3>
             <p class="mt-1 text-sm text-ink/55 leading-relaxed">Every run stores learnings in memory. Run 1 takes 5 steps. Run 50 takes 2. Your agents get smarter over time &mdash; that's a moat no workflow builder can match.</p>
           </div>
@@ -150,8 +181,8 @@
         <div class="flex gap-4">
           <div class="w-0.5 bg-accent/30 shrink-0 rounded-full"></div>
           <div>
-            <h3 class="font-display font-bold text-lg">Reasons, not just follows rules</h3>
-            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Unlike Zapier or n8n, Orcanaut agents think about what to do next. They adapt when things change and handle edge cases autonomously.</p>
+            <h3 class="font-display font-bold text-lg">Multi-agent collaboration</h3>
+            <p class="mt-1 text-sm text-ink/55 leading-relaxed">Agents delegate tasks to specialized agents. A project manager agent can hand off research to a data agent and reporting to an analytics agent &mdash; all coordinated automatically.</p>
           </div>
         </div>
         <div class="flex gap-4">
@@ -180,8 +211,8 @@
         <div class="flex gap-6 items-start">
           <span class="font-mono text-sm text-accent font-bold mt-0.5 shrink-0">02</span>
           <div>
-            <h3 class="font-display font-bold">Define an agent</h3>
-            <p class="text-sm text-ink/55 mt-1">Describe its role, which tools it can use, and what processes it handles.</p>
+            <h3 class="font-display font-bold">Define an agent or workflow</h3>
+            <p class="text-sm text-ink/55 mt-1">Describe its role, which tools it can use, add approval steps where needed, and let agents collaborate on complex processes.</p>
           </div>
         </div>
         <div class="flex gap-6 items-start">
