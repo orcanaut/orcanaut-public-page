@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orcanaut — Pitch Deck</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #E86C26;
+      --surface: #F7F5F0;
+      --ink: #1A1A1A;
+      --ink-50: rgba(26,26,26,0.5);
+      --ink-60: rgba(26,26,26,0.6);
+      --ink-70: rgba(26,26,26,0.7);
+      --ink-80: rgba(26,26,26,0.8);
+      --ink-10: rgba(26,26,26,0.06);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--surface); }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); }
+    h1, h2, h3 { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+    /* Slide container */
+    .deck { position: relative; width: 100vw; height: 100vh; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vh 8vw;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Accent bar */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: var(--accent);
+    }
+
+    /* Watermark */
+    .slide::after {
+      content: 'orcanaut.';
+      position: absolute;
+      bottom: 3vh; right: 4vw;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(12px, 1vw, 18px);
+      color: rgba(26,26,26,0.12);
+      letter-spacing: -0.02em;
+    }
+
+    /* Slide counter */
+    .slide-counter {
+      position: fixed;
+      bottom: 3vh; left: 4vw;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: clamp(11px, 0.8vw, 14px);
+      color: rgba(26,26,26,0.2);
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    /* Typography — responsive */
+    .label {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(12px, 0.9vw, 16px);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: clamp(12px, 1.5vh, 24px);
+    }
+    .slide-title {
+      font-size: clamp(32px, 3.2vw, 60px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(16px, 2vh, 32px);
+    }
+    .slide-title .accent { color: var(--accent); }
+    .slide-body {
+      font-size: clamp(16px, 1.4vw, 26px);
+      line-height: 1.6;
+      color: var(--ink-70);
+      max-width: 60vw;
+    }
+    .slide-body strong { color: var(--ink); font-weight: 600; }
+
+    /* Pipeline */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: clamp(4px, 0.5vw, 10px);
+      margin-top: clamp(16px, 2.5vh, 40px);
+    }
+    .pipeline .step {
+      font-size: clamp(10px, 0.75vw, 14px);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: clamp(4px, 0.5vh, 8px) clamp(10px, 1vw, 20px);
+      border-radius: 20px;
+      background: var(--ink-10);
+      color: var(--ink-50);
+      border: 1px solid rgba(26,26,26,0.08);
+    }
+    .pipeline .step.highlight {
+      background: rgba(232,108,38,0.1);
+      color: var(--accent);
+      border-color: rgba(232,108,38,0.2);
+    }
+    .pipeline .arrow { color: rgba(26,26,26,0.2); font-size: clamp(12px, 1vw, 18px); }
+
+    /* Grid layouts */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 56px); }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(16px, 1.8vw, 32px); }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: clamp(16px, 1.6vw, 30px);
+      border: 1px solid rgba(26,26,26,0.06);
+    }
+    .card h3 {
+      font-size: clamp(14px, 1.15vw, 22px);
+      font-weight: 700;
+      margin-bottom: clamp(4px, 0.5vh, 10px);
+    }
+    .card p {
+      font-size: clamp(12px, 0.9vw, 17px);
+      line-height: 1.55;
+      color: var(--ink-60);
+    }
+
+    /* Bullet list */
+    .bullets { list-style: none; }
+    .bullets li {
+      font-size: clamp(16px, 1.25vw, 24px);
+      line-height: 1.5;
+      color: var(--ink-70);
+      padding: clamp(4px, 0.6vh, 10px) 0;
+      padding-left: clamp(20px, 2vw, 36px);
+      position: relative;
+    }
+    .bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: clamp(12px, 1.2vh, 22px);
+      width: clamp(6px, 0.55vw, 10px);
+      height: clamp(6px, 0.55vw, 10px);
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .bullets li strong { color: var(--ink); font-weight: 600; }
+
+    /* Check list */
+    .checks { list-style: none; }
+    .checks li {
+      font-size: clamp(16px, 1.25vw, 24px);
+      line-height: 1.5;
+      color: var(--ink-70);
+      padding: clamp(3px, 0.5vh, 8px) 0;
+      padding-left: clamp(24px, 2.2vw, 40px);
+      position: relative;
+    }
+    .checks li::before {
+      content: '✓';
+      position: absolute;
+      left: 0; top: clamp(2px, 0.4vh, 6px);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: clamp(16px, 1.3vw, 24px);
+    }
+
+    /* Steps */
+    .steps { display: flex; flex-direction: column; gap: clamp(14px, 1.8vh, 28px); }
+    .step-item { display: flex; align-items: flex-start; gap: clamp(12px, 1.4vw, 24px); }
+    .step-num {
+      font-family: 'Space Grotesk', monospace;
+      font-size: clamp(13px, 1vw, 18px);
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-item h3 { font-size: clamp(16px, 1.35vw, 26px); font-weight: 700; margin-bottom: 4px; }
+    .step-item p { font-size: clamp(14px, 1vw, 20px); color: var(--ink-60); line-height: 1.5; }
+
+    /* Comparison */
+    .comparison {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(8px, 1vw, 16px);
+      font-size: clamp(16px, 1.25vw, 24px);
+      color: var(--ink-80);
+      line-height: 1.5;
+      padding: clamp(3px, 0.4vh, 6px) 0;
+    }
+    .comparison .icon { color: var(--accent); font-size: clamp(14px, 1.1vw, 20px); margin-top: 5px; flex-shrink: 0; }
+
+    /* Big number */
+    .big-num {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: clamp(48px, 5vw, 90px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: clamp(4px, 0.5vh, 10px);
+    }
+
+    /* Cover */
+    .cover { justify-content: center; }
+    .cover .logo-text {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(22px, 2vw, 38px);
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(24px, 4vh, 56px);
+      color: var(--ink);
+    }
+    .cover .slide-title { font-size: clamp(40px, 4.2vw, 76px); margin-bottom: clamp(10px, 1.5vh, 22px); }
+    .cover .slide-body { font-size: clamp(18px, 1.5vw, 28px); }
+
+    /* Closing */
+    .closing { justify-content: center; align-items: center; text-align: center; }
+    .closing .slide-title { font-size: clamp(36px, 3.6vw, 68px); max-width: 70vw; }
+
+    /* Fullscreen hint */
+    .fs-hint {
+      position: fixed;
+      top: 2vh; right: 3vw;
+      font-size: 12px;
+      color: rgba(26,26,26,0.25);
+      z-index: 20;
+      transition: opacity 0.5s;
+    }
+    body:fullscreen .fs-hint, body:-webkit-full-screen .fs-hint { opacity: 0; }
+
+    /* Print styles */
+    @media print {
+      .slide { position: relative; opacity: 1; pointer-events: auto; width: 100vw; height: 100vh; break-after: page; break-inside: avoid; }
+      .slide:last-child { break-after: avoid; }
+      .slide-counter, .fs-hint { display: none; }
+      .deck { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- SLIDE 1: Cover -->
+  <div class="slide cover active" data-slide="0">
+    <p class="logo-text">orcanaut.</p>
+    <h1 class="slide-title">AI Agents That Do<br><span class="accent">Your Processes</span></h1>
+    <p class="slide-body">Connect your tools via MCP. Define workflows.<br>Agents reason, execute, get approval, and learn.</p>
+    <div class="pipeline">
+      <span class="step">connect</span><span class="arrow">›</span>
+      <span class="step">reason</span><span class="arrow">›</span>
+      <span class="step">execute</span><span class="arrow">›</span>
+      <span class="step">approve</span><span class="arrow">›</span>
+      <span class="step">learn</span><span class="arrow">›</span>
+      <span class="step highlight">deliver</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Problem -->
+  <div class="slide" data-slide="1">
+    <p class="label">The Problem</p>
+    <h2 class="slide-title">Agency ops teams are stuck<br><span class="accent">copying data between tools</span></h2>
+    <ul class="bullets">
+      <li>Analysts spend <strong>10-15 hours/week</strong> on manual reporting across 5-8 marketing platforms</li>
+      <li>Client onboarding = <strong>6-17 manual steps</strong> across 5-8 tools (CRM, PM, analytics, social, Slack...)</li>
+      <li><strong>$20-30K/month</strong> in lost billable hours per agency on operational work</li>
+      <li>Workflow builders require <strong>node-by-node setup</strong> — and break when anything changes</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 3: Solution -->
+  <div class="slide" data-slide="2">
+    <p class="label">The Solution</p>
+    <h2 class="slide-title">Describe the process.<br><span class="accent">Agents figure out the rest.</span></h2>
+    <div>
+      <div class="comparison"><span class="icon">➜</span><span><strong>Process-first, not workflow-first</strong> — describe what you need in plain language, no node-by-node building</span></div>
+      <div class="comparison"><span class="icon">➜</span><span><strong>Agents that learn</strong> — every run stores learnings. Run 1 takes 5 steps. Run 50 takes 2. Compounds over time.</span></div>
+      <div class="comparison"><span class="icon">➜</span><span><strong>Human-in-the-loop</strong> — agents pause for approval on sensitive actions, then continue autonomously</span></div>
+      <div class="comparison"><span class="icon">➜</span><span><strong>Multi-agent teams</strong> — agents delegate to specialized agents for complex processes</span></div>
+    </div>
+    <div style="display: flex; gap: clamp(12px, 1.5vw, 24px); margin-top: clamp(16px, 2vh, 28px);">
+      <div class="card" style="flex: 1;">
+        <p style="font-size: clamp(11px, 0.8vw, 15px); color: var(--accent); margin-bottom: 6px; font-weight: 600;">CLIENT REPORTING</p>
+        <p style="font-size: clamp(13px, 1vw, 19px); color: var(--ink-70);"><strong style="color: var(--ink);">"Generate monthly reports"</strong> → Agent pulls data from Google Analytics, Meta Ads, Search Console, compiles per-client report, sends for review.</p>
+      </div>
+      <div class="card" style="flex: 1;">
+        <p style="font-size: clamp(11px, 0.8vw, 15px); color: var(--accent); margin-bottom: 6px; font-weight: 600;">CLIENT ONBOARDING</p>
+        <p style="font-size: clamp(13px, 1vw, 19px); color: var(--ink-70);"><strong style="color: var(--ink);">"Onboard new client"</strong> → Agent creates project in Asana, sets up Slack channel, connects analytics, sends welcome kit, schedules kick-off.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: How It Works -->
+  <div class="slide" data-slide="3">
+    <p class="label">How It Works</p>
+    <h2 class="slide-title">Simple as <span class="accent">1-2-3</span></h2>
+    <div class="steps">
+      <div class="step-item">
+        <span class="step-num">01</span>
+        <div>
+          <h3>Connect your tools</h3>
+          <p>Plug in MCP servers for Jira, Slack, databases, APIs, or any service your team uses</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">02</span>
+        <div>
+          <h3>Define an agent or workflow</h3>
+          <p>Describe its role, which tools it can use, add approval steps where needed</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">03</span>
+        <div>
+          <h3>Give it a task</h3>
+          <p>The agent reasons through each step, calls the right tools, asks for approval when needed, and delivers results</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Why Now -->
+  <div class="slide" data-slide="4">
+    <p class="label">Why Now</p>
+    <h2 class="slide-title">The timing is <span class="accent">perfect</span></h2>
+    <ul class="bullets">
+      <li><strong>MCP is becoming the standard</strong> for connecting AI to tools — one protocol, any tool</li>
+      <li>LLMs can now <strong>reliably plan multi-step processes</strong> and use tools with high accuracy</li>
+      <li>Companies are ready to move from <strong>"AI chatbots" to "AI that does work"</strong></li>
+      <li>n8n and Make are <strong>adding AI features to workflow builders</strong> — but building on top of node-based architecture. We're building <strong>agent-first from day one</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 6: Our Moat -->
+  <div class="slide" data-slide="5">
+    <p class="label">Why not just n8n or Make?</p>
+    <h2 class="slide-title">What they <span class="accent">can't do</span></h2>
+    <div class="grid-3">
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <h3>Continuous learning</h3>
+        <p>Every run stores learnings automatically. Run 1 takes 5 steps. Run 50 takes 2. No workflow builder does this.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <h3>Process-first, not nodes</h3>
+        <p>Describe a process in plain language. No dragging nodes, no wiring connections. The agent figures out the workflow.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <h3>Sandboxed execution</h3>
+        <p>Each agent runs in isolation with scoped tool access. n8n/Make run everything in a shared environment.</p>
+      </div>
+      <div class="card">
+        <h3>Multi-agent teams</h3>
+        <p>Agents delegate to specialized agents. Coordinator handles the process, domain experts handle details.</p>
+      </div>
+      <div class="card">
+        <h3>Human-in-the-loop</h3>
+        <p>Built-in approval gates. Agents pause for human sign-off on sensitive actions, then resume.</p>
+      </div>
+      <div class="card">
+        <h3>Real-time observability</h3>
+        <p>Live streaming of every step as it happens. Full audit trail for every decision and approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Market + Go-to-Market -->
+  <div class="slide" data-slide="6">
+    <div class="grid-2" style="align-items: start;">
+      <div>
+        <p class="label">Market</p>
+        <div class="big-num">$25B</div>
+        <p style="font-size: clamp(16px, 1.25vw, 24px); color: var(--ink-60); margin-bottom: clamp(12px, 1.5vh, 24px);">Professional services automation market by 2030</p>
+        <p style="font-size: clamp(14px, 1.1vw, 22px); color: var(--ink-60); line-height: 1.6;">Every agency with 10+ SaaS tools is a potential customer. Fast sales cycle, viral referrals, direct ROI in billable hours saved.</p>
+      </div>
+      <div>
+        <p class="label">Business Model</p>
+        <ul class="bullets">
+          <li><strong>Usage-based pricing</strong> — per process execution</li>
+          <li><strong>Land with agencies</strong> — fast PMF, $5-50K/yr contracts</li>
+          <li><strong>Viral referrals</strong> — agencies recommend tools to each other</li>
+          <li>Free tier for small teams → paid for organizations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Traction -->
+  <div class="slide" data-slide="7">
+    <p class="label">Traction</p>
+    <h2 class="slide-title">What we've <span class="accent">built</span></h2>
+    <ul class="checks">
+      <li>Working product: full agent loop (reason → execute → approve → learn → deliver)</li>
+      <li>Multi-step workflow engine with human approval gates</li>
+      <li>Multi-agent orchestration — agents delegate to specialized agents</li>
+      <li>MCP tool integration, vector memory, file I/O, real-time streaming</li>
+      <li>Scheduled and triggered runs</li>
+      <li>Early access waitlist open</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 9: The Ask -->
+  <div class="slide" data-slide="8">
+    <p class="label">The Ask</p>
+    <h2 class="slide-title">Pre-seed <span class="accent">round</span></h2>
+    <div class="steps">
+      <div class="step-item">
+        <span class="step-num">01</span>
+        <div>
+          <h3>Launch public beta</h3>
+          <p>Onboard first 100 teams, iterate on product-market fit</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">02</span>
+        <div>
+          <h3>MCP tool marketplace</h3>
+          <p>Pre-built connectors for popular tools — lower barrier to adoption</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">03</span>
+        <div>
+          <h3>Web UI for non-developers</h3>
+          <p>Visual agent builder so business teams can create and manage agents without code</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Closing -->
+  <div class="slide closing" data-slide="9">
+    <h2 class="slide-title">AI agents that do your processes<br><span class="accent">across all your tools.</span></h2>
+    <p style="font-size: clamp(18px, 1.5vw, 28px); color: var(--ink-50); margin-top: clamp(12px, 1.5vh, 24px);">orcanaut.com</p>
+  </div>
+
+</div>
+
+<div class="slide-counter"><span id="current">1</span> / <span id="total">10</span></div>
+<div class="fs-hint">Press <strong>F</strong> for fullscreen · arrows to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const currentEl = document.getElementById('current');
+  let idx = 0;
+
+  function go(i) {
+    if (i < 0 || i >= slides.length) return;
+    slides[idx].classList.remove('active');
+    idx = i;
+    slides[idx].classList.add('active');
+    currentEl.textContent = idx + 1;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); go(idx + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); go(idx - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  // Click/tap: left third = back, rest = forward
+  document.addEventListener('click', e => {
+    if (e.clientX < window.innerWidth / 3) go(idx - 1);
+    else go(idx + 1);
+  });
+
+  // Touch swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) dx > 0 ? go(idx - 1) : go(idx + 1);
+  });
+</script>
+
+</body>
+</html>
