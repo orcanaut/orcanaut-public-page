@@ -248,9 +248,12 @@
       <div class="max-w-lg">
         <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Ready to automate your processes?</h2>
         <p class="mt-3 text-ink/55">Join the waitlist. We'll let you know when it's your turn.</p>
-        <form id="hero-form" class="mt-8 max-w-sm" onsubmit="handleSubmit(event, this)">
+        <form id="hero-form" class="mt-8 max-w-sm" onsubmit="handleSubmit(event, this)" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="c4731f10-bd72-4a05-bbfa-33a428bfc958">
+          <input type="hidden" name="subject" value="New waitlist signup - Orcanaut">
+          <input type="hidden" name="from_name" value="Orcanaut Waitlist">
           <div class="flex gap-2">
-            <input id="email" type="email" required placeholder="you@company.com" class="flex-1 px-4 py-2.5 rounded-md border border-ink/10 bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm">
+            <input name="email" type="email" required placeholder="you@company.com" class="flex-1 px-4 py-2.5 rounded-md border border-ink/10 bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm">
             <button type="submit" class="px-5 py-2.5 bg-accent hover:bg-accent/90 text-white font-medium rounded-md transition-colors text-sm whitespace-nowrap">
               Join
             </button>
@@ -272,13 +275,27 @@
   <script>
     function handleSubmit(e, form) {
       e.preventDefault();
-      const email = form.querySelector('input[type="email"]').value;
+      const email = form.querySelector('input[name="email"]').value;
       const btn = form.querySelector('button');
-      btn.textContent = "You're in.";
+      btn.textContent = 'Sending...';
       btn.disabled = true;
-      btn.classList.add('opacity-75');
-      form.querySelector('input').disabled = true;
-      console.log('Waitlist signup:', email);
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(r => {
+        if (r.ok) {
+          btn.textContent = "You're in!";
+          btn.classList.add('opacity-75');
+          form.querySelector('input').disabled = true;
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      }).catch(() => {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      });
     }
   </script>
 
